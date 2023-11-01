@@ -6,6 +6,7 @@ fonction souTableau(tableau OldTable(10) : entier,  indece1,indece2:entier): tab
             NewTableSize=indece2 - indece1
             NewTable =[]
             pour j <-- 0 a NewTableSize pas 1 faire:
+                redim(NewTable(j+1))
                 NewTable[j] = OldTable[i]
                 i=i+1
             return NewTable
