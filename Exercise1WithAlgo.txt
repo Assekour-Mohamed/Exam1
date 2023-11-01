@@ -1,0 +1,46 @@
+
+algorithme TableBetween
+fonction souTableau(tableau OldTable(10) : entier,  indece1,indece2:entier): tableau : entier
+    pour i <-- 0 a 9 pas 1 faire:
+        si i = indece1:
+            NewTableSize=indece2 - indece1
+            NewTable =[]
+            pour j <-- 0 a NewTableSize pas 1 faire:
+                NewTable[j] = OldTable[i]
+                i=i+1
+            return NewTable
+ 
+fonction AskUser(Message : chain de carachtere):
+variable ansewr : carachtere
+debut:
+    ecrire(Message)
+    lire(ansewr)
+    retourn ansewr== "y" or ansewr=="Y" 
+fin
+
+variables 
+    tableau Table(10) , i ,indece1 ,indece2 : entier
+debut
+do
+
+    pour i <-- 0 a 9 pas 1 faire:
+        ecrire("entrer l element ",i+1)
+        lier(Table[i])
+
+    ecrire("entre le 1er indece: ")
+    lire(indece1)
+    ecrire("entre le 2eme indece: ")
+    lire(indece2)
+    
+    tant que (indece1<0 or indece1>9 ) or (indece2<1 or indece2>9 or indece2 <= indece1 ):
+        ecrire("invalid input try again!!")
+        ecrire("entre le 1er indece: ")
+        lire(indece1)
+        ecrire("entre le 2eme indece: ")
+        lire(indece2)
+
+    ecrire("the new table between [",indece1,",",indece2,"] is ")
+    ecrire(souTableau(Table,indece1,indece2))
+    
+jusqu a AskUser("tu veux sortie le program? y/Y      pour remlire an nauveau list press n/N  "):
+         
