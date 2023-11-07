@@ -1,10 +1,21 @@
- def CalculateMonthlyCosts(duration):
-    Plans=[0,0,0,0]
-    
-    Plans[0] = duration * 2
-    Plans[1] = (duration - 30) * 1.5
-    Plans[2] = (duration - 60) * 1
-    Plans[3] = (duration - 120 ) * 0.5
+def CalculateMonthlyCosts(duration):
+    Plans=[]
+   
+    Plans.append(duration * 2)
+    if duration > 30:
+        Plans.append((duration - 30 ) * 1.5 + 20)
+    else :
+        Plans.append(20)
+    if duration >60:
+        Plans.append((duration - 60) + 50)
+    else :
+        Plans.append(50)
+    if duration > 120:
+        Plans.append((duration - 120) * 0.5 + 100)
+    else :
+        Plans.append(100)
+    Plans.append(200)
+
 
     return Plans
 
@@ -30,7 +41,6 @@ def main():
 
         option = askUser("what is your option ? 1 to 4 :")
 
-        MonthlyAmount=[10,20,50,100,200]
         if option == "1":
             duration = float(input("enter your monthly duration in minutes"))
             Plans = CalculateMonthlyCosts(duration)
@@ -38,7 +48,7 @@ def main():
         elif option =="2":
             if duration > 0 :
                 print("\n your monthly plans ")
-                for i in range(4):
+                for i in range(5):
                     print("plan " ,i+1, "costs you ",Plans[i], "(MAD)")
             else :
                 print("enter your duration first!!")    
@@ -55,6 +65,6 @@ def main():
         else :
             print("wrong input")
             
-        input("pess any key to go to MENU")
+        input("pess enter to go to MENU")
 
 main()
